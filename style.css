@@ -1,0 +1,9 @@
+
+
+#table-1 table, th, td, tr {
+    border: solid 1px black;
+}
+
+#table-1 thead {
+    font-weight: bold;
+}
