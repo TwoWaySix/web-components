@@ -4,14 +4,12 @@ class Table extends HTMLElement {
         super();
 
         const shadow = this.attachShadow({ mode: 'open' });
-        const table = document.createElement('table');
 
-        this.div = document.createElement("div");
+        const table = document.createElement('table');
+        const div = document.createElement("div");
         this.header = table.createTHead();
         this.body = table.createTBody();
-
-        this.div.appendChild(table);
-        shadow.appendChild(this.div);
+        div.appendChild(table);
 
         const style = document.createElement("style");
         style.innerText = `
@@ -22,6 +20,8 @@ class Table extends HTMLElement {
             font-weight: bold;
         }
         `;
+
+        shadow.appendChild(div);
         shadow.appendChild(style);
     }
 
