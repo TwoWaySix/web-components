@@ -11,34 +11,28 @@ class Table extends HTMLElement {
         this.body = table.createTBody();
         div.appendChild(table);
 
-        const style = document.createElement("style");
-        style.innerText = `
-        table, td, th, tr {
-            border: solid 1px black;
-        }
-        thead {
-            font-weight: bold;
-        }
-        `;
-
         shadow.appendChild(div);
-        shadow.appendChild(style);
     }
 
     insertHeaderRow(columnNames) {
         const row = this.header.insertRow(-1);
-        columnNames.forEach(name => {
+        this.insertCells(row, columnNames);
+    }
+
+    insertBodyRow(cellContent) {
+        const row = this.body.insertRow(-1);
+        this.insertCells(row, cellContent);
+    }
+
+    insertCells(row, content) {
+        content.forEach(c => {
             const cell = row.insertCell(-1);
-            cell.innerText = name;
+            cell.innerText = c;
         });
     }
 
-    insertBodyRow(cellContents) {
-        const row = this.body.insertRow(-1);
-        cellContents.forEach(name => {
-            const cell = row.insertCell(-1);
-            cell.innerText = name;
-        });
+    addStyle(style) {
+        this.shadowRoot.appendChild(style);
     }
 }
 
