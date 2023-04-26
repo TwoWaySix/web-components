@@ -13,12 +13,16 @@ class Table extends HTMLElement {
         this.div.appendChild(table);
         shadow.appendChild(this.div);
 
-        this.div.setAttribute("id", this.getAttribute('id'));
-
-        const linkElem = document.createElement("link");
-        linkElem.setAttribute("rel", "stylesheet");
-        linkElem.setAttribute("href", "style.css");
-        shadow.appendChild(linkElem);
+        const style = document.createElement("style");
+        style.innerText = `
+        table, td, th, tr {
+            border: solid 1px black;
+        }
+        thead {
+            font-weight: bold;
+        }
+        `;
+        shadow.appendChild(style);
     }
 
     insertHeaderRow(columnNames) {
