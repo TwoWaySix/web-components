@@ -3,9 +3,9 @@ class Table extends HTMLElement {
     constructor() {
         super();
 
-        const shadow = this.attachShadow({ mode: 'open' });
+        const shadow = this.attachShadow({ mode: "open" });
 
-        const table = document.createElement('table');
+        const table = document.createElement("table");
         const div = document.createElement("div");
         this.header = table.createTHead();
         this.body = table.createTBody();
@@ -31,9 +31,13 @@ class Table extends HTMLElement {
         });
     }
 
+    deleteAllBodyRows() {
+        this.body.innerHTML = "";
+    }
+
     addStyle(style) {
         this.shadowRoot.appendChild(style);
     }
 }
 
-customElements.define('wc-table', Table);
+customElements.define("wc-table", Table);
