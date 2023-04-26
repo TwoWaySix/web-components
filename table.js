@@ -13,6 +13,8 @@ class Table extends HTMLElement {
         this.div.appendChild(table);
         shadow.appendChild(this.div);
 
+        this.div.setAttribute("id", this.getAttribute('id'));
+
         const linkElem = document.createElement("link");
         linkElem.setAttribute("rel", "stylesheet");
         linkElem.setAttribute("href", "style.css");
@@ -34,11 +36,6 @@ class Table extends HTMLElement {
             cell.innerText = name;
         });
     }
-
-    setId(id) {
-        this.div.setAttribute('id', id);
-    }
-
 }
 
 customElements.define('wc-table', Table);
